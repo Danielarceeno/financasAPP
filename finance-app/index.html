@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance App - 3ª Avaliação</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top-bar">
+        <h1>Finanças Pessoais</h1>
+        <div id="ticker" class="ticker">Carregando cotações...</div>
+      </header>
+
+      <main>
+        <section class="dashboard-section">
+          <div class="card form-card">
+            <h3>Nova Transação</h3>
+            <form id="transaction-form">
+              <input type="text" id="desc" placeholder="Descrição" required />
+              <input
+                type="number"
+                id="amount"
+                placeholder="Valor (R$)"
+                required
+                step="0.01"
+                min="0.01"
+              />
+              <select id="type">
+                <option value="income">Entrada</option>
+                <option value="expense">Saída</option>
+              </select>
+              <button type="submit">Adicionar</button>
+            </form>
+          </div>
+
+          <div class="card converter-card">
+            <h3>Conversor Rápido</h3>
+            <div class="converter-box">
+              <input type="number" id="conv-amount" placeholder="Valor em R$" />
+              <select id="conv-currency">
+                <option value="dolar">USD (Dólar)</option>
+                <option value="euro">EUR (Euro)</option>
+                <option value="btc">BTC (Bitcoin)</option>
+              </select>
+              <button id="btn-convert">Converter</button>
+            </div>
+            <div id="conv-result" class="result-display">Resultado: --</div>
+          </div>
+
+          <div class="card chart-card">
+            <h3>Resumo</h3>
+            <div class="chart-container">
+              <canvas id="financeChart"></canvas>
+            </div>
+            <div class="total-balance-container">
+              <span>Saldo Total:</span>
+              <span id="dashboard-total" class="balance-value">R$ 0,00</span>
+            </div>
+          </div>
+        </section>
+        <section class="transactions-list">
+          <h2>Histórico</h2>
+
+          <div class="grid-header">
+            <span>Descrição</span>
+            <span>Valor</span>
+            <span>Tipo</span>
+            <span>Ações</span>
+          </div>
+
+          <div id="transaction-container"></div>
+
+          <div class="history-footer">
+            <span>Total Acumulado:</span>
+            <span id="history-total" class="balance-value">R$ 0,00</span>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
